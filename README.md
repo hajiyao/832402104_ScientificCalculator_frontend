@@ -1,48 +1,49 @@
-# 计算器前端
+# Calculator Frontend
 
-计算器系统的 Web 前端。只负责界面和交互，不做计算：输入表达式，按等号，
-把表达式发给后端，显示后端返回的结果和历史记录。
+The web front end of the calculator system. It only handles the UI and interaction —
+no calculation here: type an expression, press equals, send it to the back end, and
+display whatever the back end returns, along with the history.
 
-## 技术栈
+## Tech stack
 
-HTML + CSS + 原生 JavaScript，没有框架，不需要构建。
+HTML + CSS + plain JavaScript. No framework, no build step.
 
-## 目录
+## Layout
 
-```
+```text
 index.html
 css/style.css
-js/config.js    后端地址
-js/app.js       交互和请求
+js/config.js    back-end address
+js/app.js       interaction and requests
 ```
 
-## 运行
+## Run
 
-推荐由后端一起托管：把本目录的文件复制到后端的
-`src/main/resources/webapp/`，启动后端，访问后端地址。
+Recommended: let the back end serve these files. Copy this folder into the back end's
+`src/main/resources/webapp/`, start the back end, and open its URL.
 
-也可以单独打开 `index.html`（或起个静态服务），这种情况下要先在
-`js/config.js` 里填后端地址：
+You can also open `index.html` directly (or via any static server). In that case set the
+back-end address in `js/config.js` first:
 
 ```js
 window.API_BASE = 'http://localhost:8080';
 ```
 
-需要后端先启动。
+The back end must be running.
 
-## 功能
+## Features
 
-- 加减乘除、括号、小数、正负号
-- 乘方、开方、阶乘、取模、三角函数、反三角函数、对数、指数、π、e、Ans
-- DEG/RAD 切换
-- 历史记录的查询、删除单条、清空
-- 键盘输入，回车计算，退格删除，Esc 清空
+- Basic arithmetic, parentheses, decimals, unary signs
+- Power, square root, factorial, modulo, trig and inverse trig, log, exp, π, e, Ans
+- DEG / RAD toggle
+- History: list, delete one record, clear all
+- Keyboard input (Enter to calculate, Backspace, Esc to clear)
 
-## 接口
+## API used
 
-| 操作 | 请求 |
+| Action | Request |
 |---|---|
-| 计算 | `POST /api/calculate` |
-| 查历史 | `GET /api/history` |
-| 删一条 | `DELETE /api/history/{id}` |
-| 清空 | `DELETE /api/history` |
+| Calculate | `POST /api/calculate` |
+| List history | `GET /api/history` |
+| Delete one | `DELETE /api/history/{id}` |
+| Clear all | `DELETE /api/history` |
